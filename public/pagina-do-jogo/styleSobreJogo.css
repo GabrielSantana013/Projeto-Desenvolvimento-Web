@@ -1,0 +1,51 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.menuNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    background-color: #ddfab9;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#logoPGGames{
+    padding: 10px;
+}
+
+.botoes{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.botoes > div{
+    padding: 15px;
+    height: 100%;
+}
+
+.botoes a{
+    color: inherit;
+    text-decoration: none;
+}
+
+#botaoJogar a:hover,#botaoSobreNos a:hover{
+    opacity: 0.5;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+  }
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .conteudo {
+    padding-top: 100px;
+  }
