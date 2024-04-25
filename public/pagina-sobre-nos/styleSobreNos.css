@@ -1,0 +1,31 @@
+h1{
+    text-align:center;
+}
+
+body{
+    margin:0;
+    padding:0;
+}
+
+#containerPedro{
+    background-color: red;
+    margin: 50px 0 0 0;
+    display:flex;
+    justify-content: center;
+}
+
+#fotoPedro{
+    height: 250px;
+
+
+}
+
+#containerGabriel{
+    background-color: blue;
+    display: flex;
+
+}
+#fotoGabriel{
+
+}
+
