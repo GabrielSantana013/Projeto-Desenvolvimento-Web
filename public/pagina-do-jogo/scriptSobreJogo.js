@@ -1,17 +1,18 @@
-// When the user scrolls the page, execute fixNav
+// Quando o usuário desce a página, executa a função 'fixNav()'
 window.onscroll = function() {fixNav()};
 
-// Get the header
+// Pega o menu de navegação na variável 'header'
 var header = document.getElementById("nav");
 
-// Get the offset position of the navbar
+// Pega a "offset position" do menu de navegação
 var sticky = header.offsetTop;
 
-// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+// Adiciona a classe 'prende' à variável header quando atinge a posição de scroll.
+// Remove 'prende' quando sai da posição de scroll
 function fixNav() {
   if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
+    header.classList.add("prende");
   } else {
-    header.classList.remove("sticky");
+    header.classList.remove("prende");
   }
 }

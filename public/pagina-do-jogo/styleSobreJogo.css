@@ -1,4 +1,5 @@
 body{
+    background-color: #cee3b3;
     margin: 0;
     padding: 0;
 }
@@ -38,14 +39,23 @@ body{
     opacity: 0.5;
 }
 
-/* The sticky class is added to the header with JS when it reaches its scroll position */
-.sticky {
+/* A classe 'prende' é adicionada ao menu de navegação com JS quando sua posição de scroll é atingida */
+.prende {
     position: fixed;
     top: 0;
     width: 100%
   }
-  
-  /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-  .sticky + .conteudo {
-    padding-top: 100px;
-  }
+
+/* Adiciona um padding-top para o conteúdo da página para evitar movimentos súbitos inesperados (enquanto o menu de navegação ganha uma nova posição no topo da página (position:fixed and top:0) */
+.prende + .conteudo {
+padding-top: 100px;
+}
+
+.conteudo{
+    padding: 5px 10px 5px 25px; /* padding: top right bottom left */
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+}
+
+.conteudo a{
+    text-decoration: none;
+}
