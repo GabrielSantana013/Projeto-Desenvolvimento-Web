@@ -1,5 +1,5 @@
 body{
-    background-color: #cee3b3;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
 }
@@ -11,8 +11,9 @@ body{
     flex-direction: row;
     width: auto;
     height: auto;
-    background-color: #ddfab9;
+    background-color: #dce0dd;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-bottom: solid #aeb0af 1px;
 }
 
 #logoPGGames{
@@ -44,11 +45,11 @@ body{
     position: fixed;
     top: 0;
     width: 100%
-  }
+}
 
 /* Adiciona um padding-top para o conteúdo da página para evitar movimentos súbitos inesperados (enquanto o menu de navegação ganha uma nova posição no topo da página (position:fixed and top:0) */
 .prende + .conteudo {
-padding-top: 100px;
+    padding-top: 100px;
 }
 
 .conteudo{
@@ -58,4 +59,28 @@ padding-top: 100px;
 
 .conteudo a{
     text-decoration: none;
+}
+
+.comoJogar{
+    padding: 5px 10px 5px 25px; /* padding: top right bottom left */
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+}
+
+.comoJogar a{
+    text-decoration: none;
+}
+
+#busDiv{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.bus{
+    position: relative;
+}
+
+.busStop{
+    position: relative;
+    bottom: 12px;
 }
