@@ -8,13 +8,15 @@ function resizeCanvas(){
     let percent = 0.85;
     canvas.width = window.innerWidth * percent;
     canvasLimit = canvas.width;
-    console.log(canvasLimit);
 }
 
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
-// Objeto do busao (trocar por sprite dps)
+var background = new Image();
+background.src = "imagens-pagina-jogo/road.png";
+
+// Objeto do busao
 let busao = {
     x:50,
     y:355,
@@ -39,20 +41,7 @@ let busao = {
 let calcada = {
     x1: 0,
     y1: 0,
-    altura:100,
-    largura: canvasLimit,
-    cor_linha: "black",
-    cor_preenchimento: "gray",
-    
-    desenhaCalcada:function(y)
-    {
-        ctx.beginPath();
-        ctx.strokeStyle = this.cor_linha;
-        ctx.fillStyle = this.cor_preenchimento;
-        ctx.strokeRect(this.x1, y, this.largura, this.altura);
-        ctx.fillRect(this.x1, y, this.largura, this.altura);
-        ctx.closePath();
-    }
+    altura:100
 }
 
 
@@ -126,32 +115,12 @@ function generateCarAfterDelay(x) {
 // Começa a gerar os carros
 generateCarAfterDelay(500);
 
-// Desenha o limite das faixas (PLACEHOLDER PARA A TEXTURA)
-function desenhar_linha(x1,y1,x2,y2,cor){
-    ctx.beginPath();
-    ctx.strokeStyle = cor;
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
-    ctx.closePath();
-}
-
 // Função de animação do ônibus e das calçadas
 function animacaoFundo(){
     
-    ctx.clearRect(0,0,canvasLimit,canvas.offsetHeight);
-    busao.desenhaBusao();
-    calcada.desenhaCalcada(0); // Gera a calçada do topo
-    calcada.desenhaCalcada(canvas.offsetHeight-calcada.altura); // Gera a calçada de baixo
-    // (PLACEHOLDER PARA A TEXTURA)
-    desenhar_linha(0,100,canvasLimit,100,"black"); // Borda calçada topo
-    desenhar_linha(0,220,canvasLimit,220,"black"); // Borda faixa 1
-    desenhar_linha(0,340,canvasLimit,340,"black"); // Borda faixa 2
-    desenhar_linha(0,460,canvasLimit,460,"black"); // Borda faixa 3
-    desenhar_linha(0,580,canvasLimit,580,"black"); // Borda faixa 4
-    desenhar_linha(0,700,canvasLimit,700,"black"); // Borda calçada baixo
-
-
+    ctx.clearRect(0,0,canvasLimit,canvas.offsetHeight); // Limpa o canvas
+    ctx.drawImage(background, 0, 0, canvasLimit, 800, 0, 0, canvasLimit, 800); // Cria a imagem de fundo
+    busao.desenhaBusao(); // Desenha o objeto do ônibus na tela
     
     requestAnimationFrame(animacaoFundo);
 }
