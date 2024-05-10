@@ -2,18 +2,22 @@ let canvas = document.getElementById("jogo");
 let ctx = canvas.getContext("2d");
 
 var canvasLimit = 0 // Define o limite do canvas
+let divMenu = document.getElementById("start"); // Pega a div do menu e configura a altura total e do texto
+divMenu.style.height = canvas.height+"px";
+divMenu.style.lineHeight = canvas.height+"px";
 
 // Função que atualiza o canvas para manter a responsividade
 function resizeCanvas(){
     let percent = 0.85;
-    canvas.width = window.innerWidth * percent;
-    canvasLimit = canvas.width;
+    canvas.width = window.innerWidth * percent; // Pega o tamanho proporcional da janela do navegador
+    canvasLimit = canvas.width; // Passa o novo tamanho para a variável 'canvasLimit'
+    divMenu.style.width = canvasLimit+"px"; // Define o novo tamanho da 'divMenu'
 }
 
-window.addEventListener("resize", resizeCanvas);
+window.addEventListener("resize", resizeCanvas); // Chama a função 'resizeCanvas' quando a janela é alterada
 resizeCanvas();
 
-var background = new Image();
+var background = new Image(); // Atribui a imagem de fundo pra variável 'background'
 background.src = "imagens-pagina-jogo/road.png";
 
 // Objeto do busao
@@ -90,30 +94,30 @@ function geraNovoCarro(){
 }
 
 // Função para mover os carros e desenhar eles no canvas
-function animacaoCarros() {
-
-    // Desenha e move os carros existentes
-    carrosArray.forEach(carro => {
-        carro.desenhaCarro();
-        carro.x -= 5; // Move o carro para a esquerda
-    });
+function animacaoCarros(altTab) {
+    if(!altTab){
+        // Desenha e move os carros existentes
+        carrosArray.forEach(carro => {
+            carro.desenhaCarro();
+            carro.x -= 5; // Move o carro para a esquerda
+        });
+    }
     
     // Remove os carros que sairam do canvas
     carrosArray = carrosArray.filter((carro) => carro.x > 0-carro.largura);
 
-    requestAnimationFrame(animacaoCarros);
+    requestAnimationFrame(() => animacaoCarros(altTab));
 }
 
 // Função para criar o carro depois de X quantidade de tempo (em ms)
-function generateCarAfterDelay(x) {
-    setTimeout(function() {
-        geraNovoCarro();
-        generateCarAfterDelay(x); // Chama a própria função para gerar novos carros
-    }, x);
+function geraCarroAposDelay(x, altTab) {
+    if(altTab == false){
+        setTimeout(function() {
+            geraNovoCarro();
+            geraCarroAposDelay(x); // Chama a própria função para gerar novos carros
+        }, x);
+    }
 }
-
-// Começa a gerar os carros
-generateCarAfterDelay(500);
 
 // Função de animação do ônibus e das calçadas
 function animacaoFundo(){
@@ -125,27 +129,85 @@ function animacaoFundo(){
     requestAnimationFrame(animacaoFundo);
 }
 
-// Move o objeto do ônibus com base no teclado
-document.addEventListener("keyup", function(evento){
+//========================================================================================================================================================
 
-    tecla = evento.key;
-    console.log(tecla);
+// FUNCIONAMENTO DO JOGO ('main')
+let pontos = 0;
 
-    if(tecla == "ArrowUp")
-    {
-        busao.y -= 120;
-        if(busao.y < calcada.altura+15){
-            busao.y = calcada.altura+15;
+function funcaoPrincipal(){
+    let delayObstaculos = 500;
+
+    divMenu.style.display = "none"; // Esconde a 'divMenu'
+    document.getElementById("pontuacao").innerHTML = "Pontuação: " + pontos; // Inicializa a div 'pontuacao'
+    
+    let movimento = null;
+
+    document.addEventListener("keydown", function(event) { // Inicia a movimentação quando uma tecla é pressionada
+        let tecla = event.key;
+        
+        clearInterval(movimento); // Limpa o 'setInterval' de 'movimento' para começar uma nova função
+
+        if (tecla === "ArrowUp" || tecla == "w") { // Move pra cima
+            movimento = setInterval(() => {
+                busao.y -= 5;
+                if (busao.y < calcada.altura + 15) {
+                    busao.y = calcada.altura + 15;
+                }
+            }, 10);
+        } else if (tecla === "ArrowDown" || tecla == "s") { // Move pra baixo
+            movimento = setInterval(() => {
+                busao.y += 5;
+                if (busao.y > ((canvas.offsetHeight - busao.altura) - calcada.altura) - 15) {
+                    busao.y = ((canvas.offsetHeight - busao.altura) - calcada.altura) - 15;
+                }
+            }, 10);
+        } else if (tecla === "ArrowRight" || tecla == "d") { // Move pra direita
+            movimento = setInterval(() => {
+                busao.x += 3;
+                if (busao.x > (canvasLimit - busao.largura) - 10) {
+                    busao.x = (canvasLimit - busao.largura) - 10;
+                }
+            }, 10);
+        } else if (tecla === "ArrowLeft" || tecla == "a") { // Move pra esquerda
+            movimento = setInterval(() => {
+                busao.x -= 3;
+                if (busao.x < 10) {
+                    busao.x = 10;
+                }
+            }, 10);
         }
-    }
-    if(tecla == "ArrowDown")
-    {
-        busao.y += 120;
-        if(busao.y > ((canvas.offsetHeight-busao.altura)-calcada.altura)-15){
-            busao.y = ((canvas.offsetHeight-busao.altura)-calcada.altura)-15;
+    });
+
+    document.addEventListener("keyup", function() { // Para a movimentação quando uma tecla é solta
+        clearInterval(movimento);
+    });
+
+    let altTab = false;
+    window.addEventListener("blur", function(){ // Verifica se a janela foi minimizada
+        altTab = true;
+    })
+    window.addEventListener("focus", () => { // Verifica se a janela está em foco
+        altTab = false;
+    })
+
+    setInterval(() => {
+        geraCarroAposDelay(delayObstaculos, altTab);
+    }, delayObstaculos);
+    
+    animacaoCarros(altTab);
+
+    // Aumenta os pontos se a janela não foi minimizada
+    setInterval(() => {
+        if (!altTab) { // Verifica se a janela foi minimizada
+            pontos += 1;
+            document.getElementById("pontuacao").innerHTML = "Pontuação: " + pontos; // Update points
         }
-    }
-});
+    }, 375);
+
+
+    document.removeEventListener("click", funcaoPrincipal);
+}
+
+document.addEventListener("click", funcaoPrincipal) // Começa o jogo quando clica na tela;
 
 animacaoFundo();
-animacaoCarros();

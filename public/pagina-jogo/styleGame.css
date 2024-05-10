@@ -9,10 +9,40 @@ body{
 
 #jogo{
     background-color: white;
+    border-radius: 15px;
 }
 
 .containerJogo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
+.containerJogo canvas, #start{
+    position: absolute;
+}
+
+#start{
+    z-index: 2;
+    text-align: center;
+    background-color: #380552;
+    opacity: 0.8;
+    border: solid 5px gray;
+    border-radius: 15px;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    text-transform: uppercase;
+}
+
+#pontuacao{
+    z-index: 3;
+    text-align: center;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    text-transform: uppercase;
+}
