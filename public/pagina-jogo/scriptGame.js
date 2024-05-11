@@ -94,19 +94,19 @@ function geraNovoCarro(){
 }
 
 // Função para mover os carros e desenhar eles no canvas
-function animacaoCarros(altTab) {
+function animacaoCarros(altTab, velocidadeCarro) {
     if(!altTab){
         // Desenha e move os carros existentes
         carrosArray.forEach(carro => {
             carro.desenhaCarro();
-            carro.x -= 5; // Move o carro para a esquerda
+            carro.x -= velocidadeCarro; // Move o carro para a esquerda
         });
     }
     
     // Remove os carros que sairam do canvas
     carrosArray = carrosArray.filter((carro) => carro.x > 0-carro.largura);
 
-    requestAnimationFrame(() => animacaoCarros(altTab));
+    requestAnimationFrame(() => animacaoCarros(altTab, velocidadeCarro));
 }
 
 // Função para criar o carro depois de X quantidade de tempo (em ms)
@@ -135,7 +135,8 @@ function animacaoFundo(){
 let pontos = 0;
 
 function funcaoPrincipal(){
-    let delayObstaculos = 500;
+    let delayObstaculos = 500; // Cria um novo carro a cada x ms
+    let velocidadeCarro = 5; // Move 'Xpx' os carros
 
     divMenu.style.display = "none"; // Esconde a 'divMenu'
     document.getElementById("pontuacao").innerHTML = "Pontuação: " + pontos; // Inicializa a div 'pontuacao'
@@ -194,7 +195,7 @@ function funcaoPrincipal(){
         geraCarroAposDelay(delayObstaculos, altTab);
     }, delayObstaculos);
     
-    animacaoCarros(altTab);
+    animacaoCarros(altTab, velocidadeCarro);
 
     // Aumenta os pontos se a janela não foi minimizada
     setInterval(() => {
