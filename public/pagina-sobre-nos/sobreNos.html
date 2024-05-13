@@ -11,6 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Freeman&family=Poetsen+One&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <!--Fim do import-->
 
+    <!--BOOTSTRAP ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--Fim do BOOTSTRAP-->
+
     <title>Sobre Nós</title>
     <link href="styleSobreNos.css" rel="stylesheet">
 </head>
@@ -22,7 +26,7 @@
     <header>
         <div class="interface">
             <div class="logoP&G">
-                <a href="#">
+                <a href="sobreNos.html">
                     <img width="100px" src="imagens-sobre-nos/logoPGGames.png" alt="Logo da empresa">
                 </a>
             </div><!--Logo-->
@@ -31,20 +35,117 @@
             <nav class="menu">
                 <ul>
                     <li><a href="#">Sobre o jogo</a></li>
-                    <li><a href="#">Jogar</a></li>
+                    <li><a href="#rodape">Contato</a></li>
                 </ul>
             </nav>
 
             <div class="botaoContato">
                 <a href="#">
-                    <button>Contato</button>
+                    <button>Jogar</button>
                 </a>
             </div>
 
         </div><!--Interface-->
     </header>
 
+    <!--Só pode ter uma main no html, guarda o conteúdo principal do site-->
+    <main>
 
+        <section class = "topoDoSite">
+            <div class="interface">
+                <div class="flex">
+                    <div class="txtIntroducao">
+                            <h1>
+                                Seu destino de entretenimento: <span>P&G Games!</span>
+                            </h1>
+                            <p>
+                                Os objetivos da P&G Games são criar experiências de jogo imersivas e inovadoras que cativem os jogadores, promovendo a diversão e a interação.
+                                Buscamos constantemente superar expectativas, desenvolvendo jogos de alta qualidade 
+                                que inspirem a imaginação e deixem uma marca duradoura na indústria dos jogos. Nosso foco está em oferecer 
+                                entretenimento acessível e inclusivo para todas as idades e em todas as plataformas.
+                                <div class="botaoContato">
+                                    <a href=""><button> Saiba mais!</button></a>
+                                </div> <!--BotaoContato-->
+                            </p>
+                    </div><!--TXT introducao-->
+
+                    <div class="imagemTopo">
+                        <img id = "Teste" width= "200" src = "imagens-sobre-nos/GumballSeason3.jpg" alt="">
+                    </div><!--Imagem Gabas-->
+                </div><!--flex-->
+
+            </div><!--Interface-->
+        </section><!--topoDoSite-->
+
+        <section class="sobreGabriel">
+            <div class="interface">
+                <div class="flex">
+                    <div class="imgGabriel">
+                        <img width = "200" src ="imagens-sobre-nos/GumballSeason3.jpg" alt="Foto do Gabriel">
+                    </div><!--ImgGabas-->
+                    <div class="txtGabriel">
+                        <h2>Desenvolvedor: <span>Gabriel Santana</span></h2>
+                        <p>Olá! Sou o Gabriel, um entusiasta da programação de 19 anos que reside na bela cidade costeira de Santos. 
+                            Desde cedo, desenvolvi uma paixão pela tecnologia e pela criação de soluções inovadoras. 
+                            Minha jornada no mundo da programação começou com linguagens como C e C++, onde aprendi 
+                            os fundamentos da lógica de programação e estruturas de dados.</p>
+                        <p>Ao longo do tempo, expandi meu conhecimento para abranger outras linguagens populares, como Python, HTML, CSS e JavaScript. 
+                            Com essa diversidade de habilidades, sou capaz de criar uma ampla gama de projetos, desde aplicativos desktop robustos até sites 
+                            dinâmicos e interativos.</p>
+                            <div class="botaoSocial">
+                                <a href="https://github.com/GabrielSantana013"><button><i class="bi bi-github"></i></button></a>
+                                <a href="https://www.instagram.com/bielzn.santana?igsh=MTVhYm13N2ZtdWRxaA=="><button><i class="bi bi-instagram"></i></button></a>
+                                <a href="https://www.linkedin.com/in/gabrielsantana013?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><button><i class="bi bi-linkedin"></i></button></a>
+                            </div>
+                    </div><!--txtGabas-->
+                </div><!--flex-->
+            </div><!--Interface-->
+        </section><!--sobreGabriel-->
+
+        <section class = "sobrePedro">
+            <div class="interface">
+                <div class="flex">
+                    <div class="imgPedro">
+                        <img width="200" src="imagens-sobre-nos/Darwin_Watterson.jpg" alt="Foto do Pedro">
+                    </div><!--IMGPEDRO-->
+                    <div class="txtPedro">
+                        <h2>
+                            Desenvolvedor:<span>Pedro Schneider</span>
+                        </h2>
+                        <p>
+                            Olá! Meu nome é Pedro, sou um jovem desenvolvedor apaixonado por tecnologia, residente na encantadora cidade de Santos. 
+                            Desde muito cedo, fui fascinado pelo mundo da programação e pela capacidade de criar soluções inovadoras para diversos problemas.
+                        </p>
+                        <p>
+                            Com habilidades sólidas em diversas linguagens de programação, incluindo C, C++, Python, HTML, CSS e JavaScript, no entanto é o
+                            Python que realmente me cativa, especialmente no contexto da ciência de dados, onde posso explorar conjuntos
+                            de dados complexos e aplicar técnicas estatísticas para resolver problemas do mundo real.
+                        </p>
+                        <div class="botaoSocial">
+                            <a href="https://github.com/PedroSchneider1"><button><i class="bi bi-github"></i></button></a>
+                            <a href="https://www.instagram.com/pedro.schneider3?utm_source=qr&igsh=MXBvYmx0Zm5xdWt4eQ=="><button><i class="bi bi-instagram"></i></button></a>
+                            <a href="https://www.linkedin.com/in/pedroschneider1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><button><i class="bi bi-linkedin"></i></button></a>
+                        </div>
+                    </div><!--TXTPEDRO-->
+                </div><!--flex-->
+            </div><!--interface-->
+        </section><!--sobrePedro-->
+
+    </main>
+
+    <footer id = "rodape">
+        <div class="interface">
+            <div class="linhaRodape1">
+                <div class="flex">
+                    <div class="logo">
+                        <img width="75px" src="imagens-sobre-nos/logoPGGames.png" alt="logo">
+                    </div><!--Logo-->
+                    <p><i class="bi bi-envelope-at"></i> <a href="mailto:gabrielsantanadias133@gmail.com">gabrielsantanadias133@gmail.com</a></p>
+                <p><i class="bi bi-envelope-at"></i> <a href="mailto:ps.pedroschneider@gmail.com">ps.pedroschneider@gmail.com</a></p>
+                </div><!--flex-->
+            </div><!--linhaROdape1-->
+        </div><!--Interface-->
+    </footer>
 
 
     <!--Antigo código: -->
