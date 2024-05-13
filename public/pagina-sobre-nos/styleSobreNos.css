@@ -1,59 +1,76 @@
-h1{
-    text-align:center;
+
+/* resolveu o problema de margem */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* Fontes */
+    .freeman-regular {
+        font-family: "Freeman", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      
+    .poetsen-one-regular {
+        font-family: "Poetsen One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
 }
 
 body{
-    margin:0;
-    padding:0;
+    background-color: white;
+    height: 100vh; /*100vh ocupa o espaço todo da tela*/
 }
 
-#containerPedro{
-    background-color: red;
-    margin: 50px 0 0 0;
-    display:flex;
+.interface{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Pra mexer no cabeçalho */
+header{
+    padding: 40px 4%; /* 40 px pra cima, 4% pros lados*/
+}
+
+header > .interface{
+    display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
-#containerImgPedro{
-    background-color: beige;
+header a{
+    color: rgb(182, 23, 23); /*Trocar a cor do link*/
+    text-decoration: none; /*Tirando o sublinhado*/
+    display: inline-block; /*Sem isso n funciona o hover*/
+    transition: .2s; /*Suaviza a animação da transição*/
 }
 
-#containerTextoPedro p{
-    flex-grow: 1;
-    background-color: skyblue;
-
-}
-
-#fotoPedro{
-    max-width: 100%;
-    max-height: 100%;
-}
-
-#containerGabriel{
-    background-color: blue;
-    margin: 50px 0 0 0;
-    display: flex;
-    justify-content: center;
-
-}
-#fotoGabriel{
-    max-width: 100%;
-    max-height: 100%;
-    background-color: black;
-    
-}
-
-#containerCbj{
-    background-color: blue;
-    margin: 50px 0 0 0;
-    display:flex;
-    justify-content: center;
+/*Quando passar o mouse por cima dos links*/
+header a:hover{
+    color:black;
+    transform: scale(1.05); /*Faz dar zoom quando mpassa o mouse por cima*/
 
 }
 
-#fotoCbj{
-    width:250px;
-    height: 250px;
-    background-color: black;
+header nav ul{
+    list-style-type: none; /*Tirar as bolinhas do link*/
+}
+
+header nav ul li{
+    display: inline-block;
+    padding: 0 40px;
+}
+
+header .botaoContato button{
+    padding: 10px 40px;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: rgb(247, 0, 0);
+    border: 0;
+    border-radius: 30px; /*arredonda a borda*/
+    cursor: pointer; /*Quando passar por cima vira ponteiro igual links*/
+    box-shadow: 0px 0px 8px rgb(240, 33, 33); /*Sombrinha no botão*/
 }
 
