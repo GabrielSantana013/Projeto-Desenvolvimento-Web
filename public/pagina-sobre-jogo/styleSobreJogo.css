@@ -1,0 +1,86 @@
+body{
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.menuNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    background-color: #dce0dd;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-bottom: solid #aeb0af 1px;
+}
+
+#logoPGGames{
+    padding: 10px;
+}
+
+.botoes{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.botoes > div{
+    padding: 15px;
+    height: 100%;
+}
+
+.botoes a{
+    color: inherit;
+    text-decoration: none;
+}
+
+#botaoJogar a:hover,#botaoSobreNos a:hover{
+    opacity: 0.5;
+}
+
+/* A classe 'prende' é adicionada ao menu de navegação com JS quando sua posição de scroll é atingida */
+.prende {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+/* Adiciona um padding-top para o conteúdo da página para evitar movimentos súbitos inesperados (enquanto o menu de navegação ganha uma nova posição no topo da página (position:fixed and top:0) */
+.prende + .conteudo {
+    padding-top: 100px;
+}
+
+.conteudo{
+    padding: 5px 10px 5px 25px; /* padding: top right bottom left */
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+}
+
+.conteudo a{
+    text-decoration: none;
+}
+
+.comoJogar{
+    padding: 5px 10px 5px 25px; /* padding: top right bottom left */
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+}
+
+.comoJogar a{
+    text-decoration: none;
+}
+
+#busDiv{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.bus{
+    position: relative;
+}
+
+.busStop{
+    position: relative;
+    bottom: 12px;
+}
