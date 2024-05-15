@@ -94,7 +94,7 @@ function geraNovoCarro(){
 }
 
 // Função para mover os carros e desenhar eles no canvas
-function animacaoCarros(altTab, velocidadeCarro) {
+function animacaoCarros(altTab) {
     if(!altTab){
         // Desenha e move os carros existentes
         carrosArray.forEach(carro => {
@@ -106,17 +106,7 @@ function animacaoCarros(altTab, velocidadeCarro) {
     // Remove os carros que sairam do canvas
     carrosArray = carrosArray.filter((carro) => carro.x > 0-carro.largura);
 
-    requestAnimationFrame(() => animacaoCarros(altTab, velocidadeCarro));
-}
-
-// Função para criar o carro depois de X quantidade de tempo (em ms)
-function geraCarroAposDelay(x, altTab) {
-    if(altTab == false){
-        setTimeout(function() {
-            geraNovoCarro();
-            geraCarroAposDelay(x); // Chama a própria função para gerar novos carros
-        }, x);
-    }
+    requestAnimationFrame(() => animacaoCarros(altTab)); // Chama novamente o próximo frame da mesma função
 }
 
 // Função de animação do ônibus e das calçadas
@@ -132,21 +122,22 @@ function animacaoFundo(){
 //========================================================================================================================================================
 
 // FUNCIONAMENTO DO JOGO ('main')
-let pontos = 0;
+let pontos = 0; // Pontuacao
+let velocidadeCarro = 5; // Move 'Xpx' os carros
+let delayObstaculos = 1000; // Delay (em ms) para gerar um novo obstáculo
 
 function funcaoPrincipal(){
-    let delayObstaculos = 500; // Cria um novo carro a cada x ms
-    let velocidadeCarro = 5; // Move 'Xpx' os carros
-
     divMenu.style.display = "none"; // Esconde a 'divMenu'
     document.getElementById("pontuacao").innerHTML = "Pontuação: " + pontos; // Inicializa a div 'pontuacao'
     
-    let movimento = null;
+    let movimento = null; // Inicializa a variável para controle da movimentação do busao
 
-    document.addEventListener("keydown", function(event) { // Inicia a movimentação quando uma tecla é pressionada
+    // Inicia a movimentação quando uma tecla é pressionada
+    document.addEventListener("keydown", function(event) {
         let tecla = event.key;
         
-        clearInterval(movimento); // Limpa o 'setInterval' de 'movimento' para começar uma nova função
+        // Limpa o 'setInterval' de 'movimento' para começar uma nova função
+        clearInterval(movimento);
 
         if (tecla === "ArrowUp" || tecla == "w") { // Move pra cima
             movimento = setInterval(() => {
@@ -179,36 +170,52 @@ function funcaoPrincipal(){
         }
     });
 
-    document.addEventListener("keyup", function() { // Para a movimentação quando uma tecla é solta
+    // Para a movimentação quando uma tecla é solta
+    document.addEventListener("keyup", function() {
         clearInterval(movimento);
     });
 
+    // Verifica se a janela foi minimizada ou está em foco
     let altTab = false;
-    window.addEventListener("blur", function(){ // Verifica se a janela foi minimizada
+    window.addEventListener("blur", function(){ // Minimizada
         altTab = true;
     })
-    window.addEventListener("focus", () => { // Verifica se a janela está em foco
+    window.addEventListener("focus", () => { // Em foco
         altTab = false;
     })
 
-    setInterval(() => {
-        geraCarroAposDelay(delayObstaculos, altTab);
-    }, delayObstaculos);
     
-    animacaoCarros(altTab, velocidadeCarro);
-
     // Aumenta os pontos se a janela não foi minimizada
     setInterval(() => {
         if (!altTab) { // Verifica se a janela foi minimizada
-            pontos += 1;
+            pontos += 5;
             document.getElementById("pontuacao").innerHTML = "Pontuação: " + pontos; // Update points
+            if(pontos % 50 == 0){
+                velocidadeCarro += 0.25;
+                if(delayObstaculos >= 350)
+                    delayObstaculos -= 50;
+            }
         }
-    }, 375);
+    }, 400);
+    
+    // Gera um novo carra a cada x ms (x = delayObstaculos)
+    var geradorCarro = function() {
+        geraNovoCarro();
+        setTimeout(geradorCarro, delayObstaculos);
+    }
+    setTimeout(geradorCarro, delayObstaculos);
 
 
+    
+    // Chama a função de animação dos carros
+    animacaoCarros(altTab);
+
+    // Remove o evento de 'click' da 'funcaoPrincipal'
     document.removeEventListener("click", funcaoPrincipal);
 }
 
-document.addEventListener("click", funcaoPrincipal) // Começa o jogo quando clica na tela;
+// Começa o jogo quando clica na tela;
+document.addEventListener("click", funcaoPrincipal);
 
+// Chama a função de animação do fundo
 animacaoFundo();
