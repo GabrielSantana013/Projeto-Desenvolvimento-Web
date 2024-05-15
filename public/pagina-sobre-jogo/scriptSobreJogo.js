@@ -30,17 +30,3 @@ function busAnimation(){
 }
 
 busAnimation();
-
-// FUNÇÃO fixNav
-window.onscroll = function() {fixNav()}; // Quando o usuário desce a página, executa a função 'fixNav()'
-var header = document.getElementById("nav"); // Pega o menu de navegação na variável 'header'
-var sticky = header.offsetTop; // Pega a "offset position" do menu de navegação
-
-function fixNav() {
-  if (window.pageYOffset > sticky) { // Adiciona a classe 'prende' à variável header quando atinge a posição de scroll.
-    header.classList.add("prende");
-  } else {
-    header.classList.remove("prende"); // Remove 'prende' quando sai da posição de scroll
-
-  }
-}

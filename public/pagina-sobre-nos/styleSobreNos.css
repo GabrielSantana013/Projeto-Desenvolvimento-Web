@@ -32,6 +32,8 @@
     
 }
 
+/*Estilo Animação*/
+
 button:hover{
     box-shadow: #DF000B; /*Sombrinha no botão*/
     transform: scale(1.05);
@@ -43,7 +45,7 @@ button:hover{
 
 body{
     background-color: white;
-    height: 100vh; /*100vh ocupa o espaço todo da tela*/
+    min-height: 100vh; /*100vh ocupa o espaço todo da tela*/
 }
 
 .interface{
@@ -234,11 +236,50 @@ section.sobrePedro .flex{
     transition: .2s;
 }
 
+/*Estilo da foto do Show*/
+
+
+
+section.CBJ .flex{
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.CBJ .flex .contImg{
+    flex-direction: column;
+}
+
+.CBJ p{
+    padding:10px 0;
+    text-align: center;
+    font-style: italic;
+}
+
+.CBJ button{
+    padding: 10px 40px;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #DF000B;
+    border: 0;
+    border-radius: 30px; /*arredonda a borda*/
+    cursor: pointer; /*Quando passar por cima vira ponteiro igual links*/
+    transition: .2s;
+    color: white;
+    margin-bottom: 40px 0;
+}
+
+.CBJ .contImg img{
+
+    margin: 40px ;
+}
+
 /*Estilo rodapé*/
 
 footer{
     padding: 30px 2%;
     box-shadow: 0 0 40px 10px gray;
+    margin-top: 40px;
 }
 
 
@@ -263,4 +304,17 @@ footer p a{
 
 .linhaRodape1{
     margin-left: 2px solid gray;
+}
+
+.linhaRodape2{
+    display: flex;
+    justify-content: end;
+    color:#342323;
+    font-size: 14px;
+}
+
+footer .linhaRodape2 p{
+    border-right: 2px solid gray;
+    padding-right: 20px;
+    font-style: italic;
 }
