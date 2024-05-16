@@ -3,8 +3,11 @@ let ctx = canvas.getContext("2d");
 
 var canvasLimit = 0 // Define o limite do canvas
 let divMenu = document.getElementById("start"); // Pega a div do menu e configura a altura total e do texto
+let divFinal = document.getElementById("end"); // Pega a div do final e configura a altura total e do texto
 divMenu.style.height = canvas.height+"px";
 divMenu.style.lineHeight = canvas.height+"px";
+divFinal.style.height = canvas.height+"px";
+divFinal.style.lineHeight = canvas.height+"px";
 
 // Função que atualiza o canvas para manter a responsividade
 function resizeCanvas(){
@@ -12,6 +15,7 @@ function resizeCanvas(){
     canvas.width = window.innerWidth * percent; // Pega o tamanho proporcional da janela do navegador
     canvasLimit = canvas.width; // Passa o novo tamanho para a variável 'canvasLimit'
     divMenu.style.width = canvasLimit+"px"; // Define o novo tamanho da 'divMenu'
+    divFinal.style.width = canvasLimit+"px"; // Define o novo tamanho da 'divFinal'
 }
 
 window.addEventListener("resize", resizeCanvas); // Chama a função 'resizeCanvas' quando a janela é alterada
@@ -20,6 +24,8 @@ resizeCanvas();
 var background = new Image(); // Atribui a imagem de fundo pra variável 'background'
 background.src = "imagens-pagina-jogo/road.png";
 
+var onibus = new Image(); // Atribui a imagem do ônibus
+    onibus.src = "imagens-pagina-jogo/busao.png";
 // Objeto do busao
 let busao = {
     x:50,
@@ -31,12 +37,7 @@ let busao = {
 
     desenhaBusao:function()
     {
-        ctx.beginPath();
-        ctx.strokeStyle = this.cor_linha;
-        ctx.fillStyle = this.cor_preenchimento;
-        ctx.strokeRect(this.x, this.y, this.largura, this.altura);
-        ctx.fillRect(this.x, this.y, this.largura, this.altura);
-        ctx.closePath();
+        ctx.drawImage(onibus, busao.x, busao.y)
     }
     
 }
@@ -47,7 +48,6 @@ let calcada = {
     y1: 0,
     altura:100
 }
-
 
 // Objeto dos carros
 class Carros {
@@ -101,12 +101,45 @@ function animacaoCarros(altTab) {
             carro.desenhaCarro();
             carro.x -= velocidadeCarro; // Move o carro para a esquerda
         });
+
+        // Verifica se o busão colidiu
+        colisao();
     }
     
     // Remove os carros que sairam do canvas
     carrosArray = carrosArray.filter((carro) => carro.x > 0-carro.largura);
 
     requestAnimationFrame(() => animacaoCarros(altTab)); // Chama novamente o próximo frame da mesma função
+}
+
+function reiniciar(){
+    busao.x = 50;
+    busao.y = 355;
+    carrosArray = [];
+
+    pontos = 0
+    velocidadeCarro = 5;
+    delayObstaculos = 1000;
+
+    // Começa o jogo quando clica na tela;
+    document.addEventListener("click", funcaoPrincipal);
+}
+
+// Função para criar a caixa de colisão do busão e dos carros e verificar se elas colidiram
+function colisao(){
+    carrosArray.forEach(carro => {
+        // Verifica se houve colisão
+        if (busao.x < carro.x + carro.largura &&
+            busao.x + busao.largura > carro.x &&
+            busao.y < carro.y + carro.altura &&
+            busao.y + busao.altura > carro.y) {
+            // Colisão detectada, faça o que for necessário, por exemplo, encerrar o jogo ou diminuir a pontuação
+            // Aqui você pode adicionar o que deseja fazer em caso de colisão
+            divFinal.style.display = "block";
+            // Por exemplo, para reiniciar o jogo após a colisão
+            reiniciar();
+        }
+    });
 }
 
 // Função de animação do ônibus e das calçadas
@@ -128,6 +161,7 @@ let delayObstaculos = 1000; // Delay (em ms) para gerar um novo obstáculo
 
 function funcaoPrincipal(){
     divMenu.style.display = "none"; // Esconde a 'divMenu'
+    divFinal.style.display = "none"; // Esconde a 'divMenu'
     document.getElementById("pontuacao").innerHTML = "Pontuação: " + pontos; // Inicializa a div 'pontuacao'
     
     let movimento = null; // Inicializa a variável para controle da movimentação do busao
@@ -185,7 +219,7 @@ function funcaoPrincipal(){
     })
 
     
-    // Aumenta os pontos se a janela não foi minimizada
+    // Aumenta os pontos se a janela não foi minimizada (e a velocidade/delay de aparição dos carros com base nos pontos)
     setInterval(() => {
         if (!altTab) { // Verifica se a janela foi minimizada
             pontos += 5;
@@ -200,22 +234,23 @@ function funcaoPrincipal(){
     
     // Gera um novo carra a cada x ms (x = delayObstaculos)
     var geradorCarro = function() {
-        geraNovoCarro();
+        if(!altTab){
+            geraNovoCarro();
+        }
         setTimeout(geradorCarro, delayObstaculos);
     }
     setTimeout(geradorCarro, delayObstaculos);
-
-
     
     // Chama a função de animação dos carros
     animacaoCarros(altTab);
-
+    
     // Remove o evento de 'click' da 'funcaoPrincipal'
     document.removeEventListener("click", funcaoPrincipal);
 }
 
-// Começa o jogo quando clica na tela;
-document.addEventListener("click", funcaoPrincipal);
+reiniciar();
 
 // Chama a função de animação do fundo
 animacaoFundo();
+
+// ARRUMAR A COLISAO PRA QUANDO EU CLICAR DE NOVO A FUNÇÃO PRINCIPAL N SER CHAMADA NOVAMENTE
