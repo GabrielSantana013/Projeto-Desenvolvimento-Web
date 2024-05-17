@@ -98,6 +98,7 @@ function geraYCarros(min, max) { // Gera a posição Y dos carros ([Max, Min[)
 let carrosArray = [];
 let numCarro = 0;
 
+
 function geraNovoCarro(){
     if (request) return
     let novoCarro = new Carros();
