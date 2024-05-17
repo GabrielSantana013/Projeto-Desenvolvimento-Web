@@ -28,16 +28,17 @@ var onibus = new Image(); // Atribui a imagem do ônibus
     onibus.src = "imagens-pagina-jogo/busao.png";
 
 // Crie um objeto para armazenar as imagens dos carros
-var carros = {
-    carro1: new Image(),
-    carro2: new Image(),
-    carro3: new Image()
+var obstaculos = {
+    obs1: new Image(),
+    obs2: new Image(),
+    obs3: new Image(),
+    obs4: new Image()
 };
 
 // Defina os caminhos das imagens dos carros
-carros.carro1.src = "imagens-pagina-jogo/carro1.png";
-carros.carro2.src = "imagens-pagina-jogo/carro2.png";
-carros.carro3.src = "imagens-pagina-jogo/carro3.png";
+obstaculos.obs1.src = "imagens-pagina-jogo/carro1.png";
+obstaculos.obs2.src = "imagens-pagina-jogo/carro2.png";
+obstaculos.obs3.src = "imagens-pagina-jogo/carro3.png";
 
 // Objeto do busao
 let busao = {
@@ -63,61 +64,61 @@ let calcada = {
 }
 
 // Classe dos carros
-class Carros {
+class Obstaculo {
     constructor(){
         this.x = canvasLimit;
         this.y = 0;
         this.altura = 50;
         this.largura = 80;
-        this.imagem = "carro";
+        this.imagem = "obs";
     }
 
-    desenhaCarro(){
-        ctx.drawImage(carros[this.imagem], this.x, this.y)
+    desenhaObs(){
+        ctx.drawImage(obstaculos[this.imagem], this.x, this.y)
     }
 }
 
 // FUNÇÕES
 var request = true;
 
-function geraYCarros(min, max) { // Gera a posição Y dos carros ([Max, Min[)
+function geraY(min, max) { // Gera a posição Y dos carros ([Max, Min[)
     // Define a área entre as calçadas como o limite do canva para os carros
     const minCeiled = Math.ceil(min); // Parte de baixo da calçada do topo
     const maxFloored = Math.floor(max); // Parte de cima da calçada de baixo
 
-    let yCarro, numFaixa
+    let posY, numFaixa
     let faixas = [100, 220, 340, 460, 580, 700] // Define o limite das 5 faixas
     
     numFaixa = Math.floor(Math.random() * (6 - 1) + 1); // Escolhe uma faixa aleatória
-    yCarro = Math.floor(Math.random() * ((faixas[numFaixa]-60) - (faixas[numFaixa-1]+10)) + (faixas[numFaixa-1]+10)); // Gera uma posição dentro da faixa aleatoriamente, com uma margem de 10px
+    posY = Math.floor(Math.random() * ((faixas[numFaixa]-60) - (faixas[numFaixa-1]+10)) + (faixas[numFaixa-1]+10)); // Gera uma posição dentro da faixa aleatoriamente, com uma margem de 10px
 
-    return yCarro;
+    return posY;
 }
 
 // Gera um objeto de 'carros' na tela e coloca no array de carros
-let carrosArray = [];
-let numCarro = 0;
+let obsArray = [];
+let numImagem = 0;
 
-
+// Função para gerar um novo objeto da classe 'Carros'
 function geraNovoCarro(){
     if (request) return
-    let novoCarro = new Carros();
+    let novoCarro = new Obstaculo();
 
-    numCarro = Math.floor(Math.random() * 3) + 1; // Escolhe um carro aleatório
-    novoCarro.imagem = "carro" + numCarro;
+    numImagem = Math.floor(Math.random() * 3) + 1; // Escolhe um carro aleatório
+    novoCarro.imagem = "obs" + numImagem;
     
-    let resultY = geraYCarros(calcada.altura, (canvas.offsetHeight-calcada.altura)-novoCarro.altura);
+    let resultY = geraY(calcada.altura, (canvas.offsetHeight-calcada.altura)-novoCarro.altura);
     novoCarro.y = resultY;
     
-    carrosArray.push(novoCarro);
+    obsArray.push(novoCarro);
 }
 
 // Função para mover os carros e desenhar eles no canvas
 function animacaoCarros(altTab) {
     if(!altTab){
         // Desenha e move os carros existentes
-        carrosArray.forEach(carro => {
-            carro.desenhaCarro();
+        obsArray.forEach(carro => {
+            carro.desenhaObs();
             carro.x -= velocidadeCarro; // Move o carro para a esquerda
         });
 
@@ -126,7 +127,7 @@ function animacaoCarros(altTab) {
     }
     
     // Remove os carros que sairam do canvas
-    carrosArray = carrosArray.filter((carro) => carro.x > 0-carro.largura);
+    obsArray = obsArray.filter((carro) => carro.x > 0-carro.largura);
 
     if(request){
         velocidadeCarro = 5;
@@ -137,7 +138,7 @@ function animacaoCarros(altTab) {
 
 // Função para criar a caixa de colisão do busão e dos carros e verificar se elas colidiram
 function colisao(){
-    carrosArray.forEach(carro => {
+    obsArray.forEach(carro => {
         // Verifica se houve colisão
         if (busao.x < carro.x + carro.largura &&
             busao.x + busao.largura > carro.x &&
@@ -170,7 +171,7 @@ function reiniciar(){
     request = true
     busao.x = 50;
     busao.y = 355;
-    carrosArray = [];
+    obsArray = [];
 
     // Começa o jogo quando clica na tela;
     document.addEventListener("click", funcaoPrincipal);
