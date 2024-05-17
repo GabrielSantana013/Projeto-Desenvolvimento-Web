@@ -46,6 +46,7 @@ button:hover{
 body{
     background-color: white;
     min-height: 100vh; /*100vh ocupa o espaço todo da tela*/
+    transition: .5s; /*Delay da animação*/
 }
 
 .interface{
@@ -91,6 +92,79 @@ header nav ul li{
 
 header{
     border: 2px solid black;
+}
+
+.trilho{
+    width: 80px;
+    height: 35px;
+    background-color: #c3c3c3;
+    border-radius: 30px;
+    position:relative /*pra poder mexer no indicador*/
+    
+}
+
+.trilho .indicador{
+    width: 40px;
+    height: 35px;
+    background-color: white;
+    border-radius: 50%;
+    transform: scale(.7); /*pra ele ficar menor que o pai*/
+    cursor: pointer;
+    position: absolute;
+    left:0px;
+    transition: .3s; /*animação*/
+        
+}
+
+.trilho.dark{
+    background-color: gray;
+}
+
+.trilho.dark .indicador{
+    left:40px;
+    background-color: black;
+}
+
+
+body.dark{
+    background-color: black;
+
+}
+
+body.dark a{
+    color:#f8f8ff ;
+}
+header.dark{
+    border-bottom:2px solid #f8f8ff ;
+}
+
+.topoDoSite.dark .txtIntroducao h1 span{
+    color:#f8f8ff ;
+}
+
+.topoDoSite.dark .txtIntroducao p{
+    color: #f8f8ff;
+}
+
+.sobreGabriel.dark .txtGabriel p {
+    color: #f8f8ff;
+}
+.sobreGabriel.dark .txtGabriel h2{
+    color: #f8f8ff;
+}
+.sobrePedro.dark .txtPedro p {
+    color: #f8f8ff;
+}
+.sobrePedro.dark .txtPedro h2{
+    color: #f8f8ff;
+}
+
+.contImg.dark p{
+    color: #f8f8ff;
+}
+
+.linhaRodape2.dark p {
+    color: #f8f8ff;
 }
 
 /*TOPO DO SITE*/
@@ -194,6 +268,11 @@ section.sobreGabriel .flex{
     transition: .2s;
 }
 
+#fotoGabriel{
+    border-radius:30px;
+    border:3px solid #DF000B;
+}
+
 /*Estilo sobre Pedro*/
 
 section.sobrePedro{
@@ -236,6 +315,12 @@ section.sobrePedro .flex{
     transition: .2s;
 }
 
+#fotoPedro{
+    border-radius: 30px;
+    border: 3px solid #DF000B;
+
+}
+
 /*Estilo da foto do Show*/
 
 
@@ -272,6 +357,12 @@ section.CBJ .flex{
 .CBJ .contImg img{
 
     margin: 40px ;
+}
+
+#fotoCBJ{
+    border-radius: 30px;
+    border: 3px solid #DF000B;
+
 }
 
 /*Estilo rodapé*/
