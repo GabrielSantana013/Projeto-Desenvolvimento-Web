@@ -26,6 +26,7 @@ botao.addEventListener("click", function(){
     let sobrePedro = document.querySelector(".sobrePedro");
     let linhaRodape2 = document.querySelector(".linhaRodape2");
     let contImg = document.querySelector('.contImg');
+    
 
     trilho.addEventListener('click', function(){
         trilho.classList.toggle('dark'); //assim que clicar ele muda pra dark

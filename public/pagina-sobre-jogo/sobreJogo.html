@@ -18,44 +18,62 @@
     </head>
 
     
-    <body>
-        <!--Header = cabeçalho-->
-        <header>
-            <div class="interface">
-                <div class="logoP&G">
-                    <a href="sobreNos.html">
-                        <img width="100px" src="../imagensPublic/logoPGGames.png" alt="Logo da empresa">
-                    </a>
-                </div><!--Logo-->
-    
-                <!--Usa a tag nav pela semântica, é uma seção que aponta pra outras páginas-->
-                <nav class="menu">
-                    <ul>
-                        <li><a href="../pagina-sobre-nos/sobreNos.html">Sobre Nós</a></li>
-                        <li><a href="#rodape">Contato</a></li>
-                    </ul>
-                </nav>
-    
-                <div class="botaoContato">
-                    <a href="#">
-                        <button>Jogar</button>
-                    </a>
-                </div>
-    
-            </div><!--Interface-->
-        </header>
+    <header>
+        <div class="interface">
+            <div class="logoP&G">
+                <a href="../pagina-sobre-nos/sobreNos.html">
+                    <img width="100px" src="../imagensPublic/logoPGGames.png" alt="Logo da empresa">
+                </a>
+            </div><!--Logo-->
+            <!--Usa a tag nav pela semântica, é uma seção que aponta pra outras páginas-->
+            <nav class="menu">
+                <ul>
+                    <li><a href="../pagina-sobre-nos/sobreNos.html">Sobre nós</a></li>
+                    <li><a href="#rodape">Contato</a></li>
+                    <li>
+                        <div class="trilho" id="trilho">
+                            <div class="indicador">  
+                            </div><!--indicador-->
+                        </div><!--trilho-->
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="botaoContato">
+                <a href="../pagina-jogo/game.html">
+                    <button>Jogar</button>
+                </a>
+            </div>
+
+        </div><!--Interface-->
+    </header>
+
 
         <main>
             <section class="sobreJogo">
                 <div class="interface">
                     <div class="flex">
                         <div class="txtSobreJogo">
-                            <h2>Fúria do Busão</h2>
-                            <p>*NOME DO JOGO* é um jogo criado para um projeto universitário interdisciplinar com tema "Mobilidade".</p>
-                            <p>Em <b>*NOME DO JOGO*</b>, você assume o controle de um motorista de ônibus habilidoso e que precisa se assegurar que seus passageiros cheguem em seus respectivos destinos com segurança!</p>
-                            <p>Seu <b>objetivo</b> no jogo é simples: você deve desviar dos carros vindo em sua direção enquanto tenta chegar à próxima parada! <br>
-                                <b>Mas cuidado!</b> O motorista do ônibus não vai parar de acelerar...</p>
-                            <p>Caso queira saber mais sobre os criadores, clique <a href="">aqui</a>!</p>
+                            <h2><span>Dia Mais Calmo Em São Bernardo do Campo </span >(DMCSBC)</h2>
+                            <p>
+                                DMCSBC é um jogo desenvolvido como parte de um projeto universitário interdisciplinar,
+                                focado no tema "Mobilidade". Este jogo foi concebido para explorar de forma lúdica e educativa
+                                os desafios diários enfrentados no transporte urbano.
+                            </p>
+                            <p>
+                                Em <b>DMCSBC</b>, você se torna um motorista de ônibus experiente, responsável por garantir que seus
+                                passageiros
+                                cheguem com segurança aos seus destinos. Sua missão é essencial para o bom funcionamento da cidade,
+                                exigindo habilidades de direção e tomada de decisão rápida.
+                            </p>
+                            <p>
+                                O <b>objetivo</b> do jogo é claro: desviar dos carros que vêm em sua direção enquanto você se dirige à próxima
+                                parada de ônibus. Porém, há um detalhe importante que aumenta a dificuldade – <b>o ônibus não para de acelerar!</b>
+                                Exigindo reflexos rápidos e uma estratégia bem planejada para evitar colisões e alcançar as paradas com sucesso.
+                                <b>DMCSBC</b> combina diversão e desafio, oferecendo uma experiência única que reflete os aspectos críticos
+                                da mobilidade urbana.
+                            </p>
+                          
                         </div><!--txtSobreJogo-->
                     </div><!--flex-->
                 </div><!--interface-->
@@ -64,26 +82,39 @@
             <section class="comoJogar">
                 <div class="interface">
                     <div class="flex">
+                        <div class="containerImagem">
+                            <img id = "fotoJogo" width = "500px"src="../imagensPublic/Print_Jogo.jpg">
+                        </div><!--containerImagem-->
                         <div class="txtComoJogar">
                             <h2>COMO JOGAR?</h2>
-                            <h3>COMANDOS</h3>
-                            <img src="./imagens-sobre-jogo/info-icon.png" alt="placeholder">
+                            <p><b>DMCSBC</b> é um jogo Endless Runner (assim como Subway Surfers e Temple Run), onde o objetivo principal é levar os seus passageiros em segurança durante o máximo de tempo possível, 
+                            desviando dos obstáculos e aumentando a sua pontuação!</p>
+                        </div><!--txtComoJogar-->
+                    </div><!--Flex-->
+                </div><!--Interface-->
+            </section><!--comoJogar-->
+
+            <section id="comandos">
+                <div class="interface">
+                    <div class="flex">
+                        <div class="txtComandos">
+                            <h3>COMANDOS: </h3> 
+                            <div class="iconesComandos">
+                                <div class="botaoCima">
+                                    <i class="bi bi-arrow-up-square"> <span> - Move pra cima</span></i>
+                                </div>
+                                <div class="botaoBaixo">
+                                    <span>Move pra esquerda - </span><i class="bi bi-arrow-left-square"></i>
+                                    <i class="bi bi-arrow-down-square"></i>                                   
+                                    <i class="bi bi-arrow-right-square"><span> - Move pra direita</span></i>
+                                </div>
+                                <div class="textoBotaoBaixo">
+                                    <i class="bi bi-arrow-return-right"><span> Move para baixo</span></i>
+                                    
+                                </div>
                         </div>
                     </div>
                 </div>
-
-            </section>
-
-            <section>
-                
-                <div class="comoJogar">
-                    
-                    <div id="controles">
-                        
-                        
-                    </div>
-                </div>
-         
             </section>
             
            <div id="busDiv">
@@ -94,20 +125,22 @@
         </main>
 
 
-        <footer id = "rodape">
+        <footer id="rodape">
             <div class="interface">
                 <div class="linhaRodape1">
                     <div class="flex">
                         <div class="logo">
                             <img width="75px" src="../imagensPublic/logoPGGames.png" alt="logo">
                         </div><!--Logo-->
-                        <p><i class="bi bi-envelope-at"></i> <a href="mailto:gabrielsantanadias133@gmail.com">gabrielsantanadias133@gmail.com</a></p>
-                    <p><i class="bi bi-envelope-at"></i> <a href="mailto:ps.pedroschneider@gmail.com">ps.pedroschneider@gmail.com</a></p>
-                </div><!--flex-->
-            </div><!--linhaRodape1-->
-            <div class="linhaRodape2">
-                <p>Copyright © 2024 P&G Games, Inc. - All Rights Reserved</p>
-            </div><!--LinhaRodape2-->
+                        <p><i class="bi bi-envelope-at"></i> <a
+                                href="mailto:gabrielsantanadias133@gmail.com">gabrielsantanadias133@gmail.com</a></p>
+                        <p><i class="bi bi-envelope-at"></i> <a
+                                href="mailto:ps.pedroschneider@gmail.com">ps.pedroschneider@gmail.com</a></p>
+                    </div><!--flex-->
+                </div><!--linhaRodape1-->
+                <div class="linhaRodape2">
+                    <p>Copyright © 2024 P&G Games, Inc. - All Rights Reserved</p>
+                </div><!--LinhaRodape2-->
             </div><!--Interface-->
         </footer>
 

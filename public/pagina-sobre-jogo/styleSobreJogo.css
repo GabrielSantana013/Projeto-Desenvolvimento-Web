@@ -45,6 +45,7 @@ button:hover{
 body{
     background-color: white;
     min-height: 100vh; /*100vh ocupa o espaço todo da tela*/
+    transition: .5s;
 }
 
 .interface{
@@ -92,7 +93,179 @@ header{
     border: 2px solid black;
 }
 
+.trilho{
+    width: 80px;
+    height: 35px;
+    background-color: #c3c3c3;
+    border-radius: 30px;
+    position:relative /*pra poder mexer no indicador*/
+    
+}
 
+.trilho .indicador{
+    width: 40px;
+    height: 35px;
+    background-color: white;
+    border-radius: 50%;
+    transform: scale(.7); /*pra ele ficar menor que o pai*/
+    cursor: pointer;
+    position: absolute;
+    left:0px;
+    transition: .3s; /*animação*/
+        
+}
+
+/*Estilo sobreJogo*/
+
+section .flex .sobreJogo{
+    align-items: center;
+}
+
+section .txtSobreJogo{
+    padding: 40px 4%;
+}
+
+.flex .txtSobreJogo{
+
+    text-align: justify; 
+    color:#342323
+}
+
+.txtSobreJogo h2{
+    font-size: 40px;
+    color:#DF000B;
+    text-align:center;
+}
+
+#fotoJogo{
+    border-radius: 30px;
+    margin: 30px 50px;
+    border: 2px solid #DF000B;
+}
+
+
+
+/*Estilo comoJogar*/
+
+
+section .comoJogar{
+    padding: 40px 4%;
+}
+
+section .flex .txtComoJogar{
+    color:#342323;
+}
+
+.txtSobreJogo span{
+    color:#342323;
+}
+
+.interface .flex .txtComoJogar h2{
+    text-align: center;
+    color: #DF000B;
+    line-height: 40px;
+}
+
+.interface .flex h2{
+    line-height: 40px;
+}
+
+.flex .txtComoJogar .botaoCima{
+    align-items: center;
+}
+
+ .bi{
+    font-size: 30px;
+}
+
+.iconesComandos span{
+    font-size: 20px;
+}
+
+.botaoCima{
+    margin-left: 204px;
+}
+
+.botaoBaixo{
+    justify-content: center;
+    gap: 10px;
+}
+
+.textoBotaoBaixo{
+    margin-left: 220px;
+}
+
+h3{
+    margin: 40px 0;
+}
+
+/*MODO ESCURO*/
+
+.trilho{
+    width: 80px;
+    height: 35px;
+    background-color: #c3c3c3;
+    border-radius: 30px;
+    position:relative /*pra poder mexer no indicador*/
+    
+}
+
+.trilho .indicador{
+    width: 40px;
+    height: 35px;
+    background-color: white;
+    border-radius: 50%;
+    transform: scale(.7); /*pra ele ficar menor que o pai*/
+    cursor: pointer;
+    position: absolute;
+    left:0px;
+    transition: .3s; /*animação*/
+        
+}
+
+.trilho.dark{
+    background-color: gray;
+}
+
+.trilho.dark .indicador{
+    left:40px;
+    background-color: black;
+}
+
+
+body.dark{
+    background-color: black;
+
+}
+
+body.dark a{
+    color:#f8f8ff ;
+}
+header.dark{
+    border-bottom:2px solid #f8f8ff ;
+}
+
+.linhaRodape2.dark p {
+    color: #f8f8ff;
+}
+
+.sobreJogo.dark p{
+    color:#f8f8ff;
+}
+.sobreJogo.dark span{
+    color:#f8f8ff;
+}
+
+.comoJogar.dark p{
+    color:#f8f8ff;
+}
+
+.iconesComandos.dark .bi{
+    color:#f8f8ff;
+}
+
+
+/*Animação do busao*/
 
 #busDiv{
     display: flex;
