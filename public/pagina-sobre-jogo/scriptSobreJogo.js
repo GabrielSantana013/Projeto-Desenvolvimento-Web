@@ -30,3 +30,24 @@ function busAnimation(){
 }
 
 busAnimation();
+
+
+/*Modo Escuro*/
+
+let trilho = document.getElementById("trilho");
+let body = document.querySelector('body');
+let header = document.querySelector('header');
+let linhaRodape2 = document.querySelector(".linhaRodape2");
+let sobreJogo = document.querySelector(".sobreJogo");
+let comoJogar = document.querySelector(".comoJogar");
+let iconesComandos = document.querySelector(".iconesComandos");
+
+trilho.addEventListener('click', function(){
+  trilho.classList.toggle('dark'); //assim que clicar ele muda pra dark
+  body.classList.toggle('dark');
+  header.classList.toggle('dark');
+  linhaRodape2.classList.toggle('dark');
+  sobreJogo.classList.toggle('dark');
+  comoJogar.classList.toggle('dark');
+  iconesComandos.classList.toggle('dark');
+});

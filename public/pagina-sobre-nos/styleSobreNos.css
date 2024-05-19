@@ -152,11 +152,18 @@ header.dark{
 .sobreGabriel.dark .txtGabriel h2{
     color: #f8f8ff;
 }
+
+.sobreGabriel.dark .txtGabriel h3{
+    color:#f8f8ff;
+}
 .sobrePedro.dark .txtPedro p {
     color: #f8f8ff;
 }
 .sobrePedro.dark .txtPedro h2{
     color: #f8f8ff;
+}
+.sobrePedro.dark .txtPedro h3{
+    color:#f8f8ff;
 }
 
 .contImg.dark p{
@@ -170,9 +177,7 @@ header.dark{
 /*TOPO DO SITE*/
 
 section.topoDoSite{
-
     padding: 40px 4%;
-
 }
 
 section.topoDoSite .flex{
@@ -294,6 +299,7 @@ section.sobrePedro .flex{
 .sobrePedro .txtPedro h2 span{
     display: block;
     color:#DF000B;
+    margin-bottom: 30px;
 }
 
 .sobrePedro .txtPedro p{
