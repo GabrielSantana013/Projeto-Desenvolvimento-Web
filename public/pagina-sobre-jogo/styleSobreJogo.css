@@ -137,6 +137,7 @@ section .txtSobreJogo{
     text-align:center;
 }
 
+
 #fotoJogo{
     border-radius: 30px;
     margin: 30px 50px;
@@ -182,6 +183,19 @@ section .flex .txtComoJogar{
     font-size: 20px;
 }
 
+.flex .iconesComandos .botaoCima{
+    align-items: center;
+}
+
+.flex .iconesComandos .botaoBaixo{
+    align-items: center;
+}
+
+#textoWASD{
+    text-align: center;
+    color: #342323;
+}
+
 .botaoCima{
     margin-left: 204px;
 }
@@ -197,7 +211,24 @@ section .flex .txtComoJogar{
 
 h3{
     margin: 40px 0;
+    
 }
+
+.txtComandos h3{
+    text-align: center;
+    color: #342323;
+}
+
+.txtComandos{
+    width: 100%;
+    padding: 40px 4%;
+}
+
+.iconesComandos .bi, .iconesComandos span{
+    color: #342323;
+}
+
+
 
 /*MODO ESCURO*/
 
