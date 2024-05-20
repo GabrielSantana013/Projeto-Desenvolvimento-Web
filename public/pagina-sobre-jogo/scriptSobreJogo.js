@@ -41,6 +41,7 @@ let linhaRodape2 = document.querySelector(".linhaRodape2");
 let sobreJogo = document.querySelector(".sobreJogo");
 let comoJogar = document.querySelector(".comoJogar");
 let iconesComandos = document.querySelector(".iconesComandos");
+let txtComandos = document.querySelector(".txtComandos");
 
 trilho.addEventListener('click', function(){
   trilho.classList.toggle('dark'); //assim que clicar ele muda pra dark
@@ -50,4 +51,5 @@ trilho.addEventListener('click', function(){
   sobreJogo.classList.toggle('dark');
   comoJogar.classList.toggle('dark');
   iconesComandos.classList.toggle('dark');
+  txtComandos.classList.toggle('dark');
 });

@@ -8,9 +8,34 @@
     <link href="styleGame.css" rel="styleSheet">
 </head>
 <body>
-    <br><div id="pontuacao"></div>
+
+    <header>
+        <div class="interface">
+            <div class="logoP&G">
+                <a href="../pagina-sobre-nos/sobreNos.html">
+                    <img width="100px" src="../imagensPublic/logoPGGames.png" alt="Logo da empresa">
+                </a>
+            </div><!--Logo-->
+            <!--Usa a tag nav pela semântica, é uma seção que aponta pra outras páginas-->
+            <nav class="menu">
+                <ul>
+                    <li><a href="../pagina-sobre-nos/sobreNos.html">Sobre nós</a></li>
+                </ul>
+            </nav>
+
+            <div class="botaoContato">
+                <a href="../pagina-jogo/game.html">
+                    <button>Jogar</button>
+                </a>
+            </div>
+
+        </div><!--Interface-->
+    </header>
+
+    
     
     <div class="containerJogo">
+        <br><div id="pontuacao"></div>
         <canvas id="jogo" height="800" width="800"></canvas>
         <div id="start">Clique na tela para começar!</div>
         <div id="end"></div>
