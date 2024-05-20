@@ -3,10 +3,11 @@ let ctx = canvas.getContext("2d");
 
 var canvasLimit = 0 // Define o limite do canvas
 let divMenu = document.getElementById("start"); // Pega a div do menu e configura a altura total e do texto
+let pontuacao = document.getElementById("pontuacao") // Pega a div da pontuação e configura a altura e largura
 let divFinal = document.getElementById("end"); // Pega a div do final e configura a altura total e do texto
 
 divMenu.style.height = canvas.height+"px";
-
+pontuacao.style.height = canvas.height+"px";
 divFinal.style.height = canvas.height+"px";
 
 // Função que atualiza o canvas para manter a responsividade
@@ -15,11 +16,15 @@ function resizeCanvas(){
     canvas.width = window.innerWidth * percent; // Pega o tamanho proporcional da janela do navegador
     canvasLimit = canvas.width; // Passa o novo tamanho para a variável 'canvasLimit'
     divMenu.style.width = canvasLimit+"px"; // Define o novo tamanho da 'divMenu'
+    pontuacao.style.width = canvasLimit+"px"; // Define o novo tamanho da 'divFinal'
     divFinal.style.width = canvasLimit+"px"; // Define o novo tamanho da 'divFinal'
 }
 
 window.addEventListener("resize", resizeCanvas); // Chama a função 'resizeCanvas' quando a janela é alterada
 resizeCanvas();
+
+var audio = new Audio();
+audio.src = "imagens-pagina-jogo/tema.mp3"
 
 var background = new Image(); // Atribui a imagem de fundo pra variável 'background'
 background.src = "imagens-pagina-jogo/road.png";
@@ -39,6 +44,7 @@ var obstaculos = {
 obstaculos.obs1.src = "imagens-pagina-jogo/carro1.png";
 obstaculos.obs2.src = "imagens-pagina-jogo/carro2.png";
 obstaculos.obs3.src = "imagens-pagina-jogo/carro3.png";
+obstaculos.obs4.src = "imagens-pagina-jogo/moto1.png";
 
 // Objeto do busao
 let busao = {
@@ -104,9 +110,14 @@ function geraNovoCarro(){
     if (request) return
     let novoCarro = new Obstaculo();
 
-    numImagem = Math.floor(Math.random() * 3) + 1; // Escolhe um carro aleatório
+    numImagem = Math.floor(Math.random() * 4) + 1; // Escolhe um carro aleatório
     novoCarro.imagem = "obs" + numImagem;
     
+    if(numImagem == 4){ // Cria um objeto moto
+        novoCarro.altura = 31;
+        novoCarro.largura = 74;
+    }
+
     let resultY = geraY(calcada.altura, (canvas.offsetHeight-calcada.altura)-novoCarro.altura);
     novoCarro.y = resultY;
     
@@ -185,10 +196,11 @@ let velocidadeCarro = 5; // Move 'Xpx' os carros
 let delayObstaculos = 1000; // Delay (em ms) para gerar um novo obstáculo
 
 function funcaoPrincipal(){
+    audio.play();
     request = false
     divMenu.style.display = "none"; // Esconde a 'divMenu'
     divFinal.style.display = "none"; // Esconde a 'divFinal'
-    document.getElementById("pontuacao").innerHTML = "Pontuação: " + pontos; // Inicializa a div 'pontuacao'
+    pontuacao.innerHTML = "Pontuação: " + pontos; // Inicializa a div 'pontuacao'
 
     // Verifica se a janela foi minimizada ou está em foco
     let altTab = false;
@@ -240,9 +252,11 @@ function funcaoPrincipal(){
 }
 
  // Inicia a movimentação quando uma tecla é pressionada
+ 
  let movimento = null;
  document.addEventListener("keydown", function(event) {
      let tecla = event.key;
+     event.preventDefault();
      
      // Limpa o 'setInterval' de 'movimento' para começar uma nova função
      clearInterval(movimento);

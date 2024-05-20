@@ -81,9 +81,11 @@ header{
 }
 
 .containerJogo{
-    margin: 40px 4%;
+    padding-top: 15px;
+    margin-bottom: 15px;
     display: flex;
-   
+    align-items: center;
+    justify-content: center;
 }
 
 .containerJogo canvas, #start, #end{
@@ -127,5 +129,5 @@ header{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: larger;
     text-transform: uppercase;
-    width: 100%; /*centraliza direitim ai*/
+    padding: 10px 10px;
 }
