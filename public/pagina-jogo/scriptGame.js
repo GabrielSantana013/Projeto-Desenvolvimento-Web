@@ -25,6 +25,26 @@ resizeCanvas();
 
 var audio = new Audio();
 audio.src = "imagens-pagina-jogo/tema.mp3"
+audio.loop = true;
+
+let audioIconOn = document.getElementById("on");
+let audioIconOff = document.getElementById("off");
+
+audioIconOff.style.display = 'none';
+
+function mute(){
+    if(audioIconOff.style.display == 'none'){
+        console.log("a")
+        audio.volume = 0;
+        audioIconOn.style.display = 'none';
+        audioIconOff.style.display = 'inline';
+    }
+    else{
+        audio.volume = 1;
+        audioIconOn.style.display = 'block';
+        audioIconOff.style.display = 'none';
+    }
+}
 
 var background = new Image(); // Atribui a imagem de fundo pra variável 'background'
 background.src = "imagens-pagina-jogo/road.png";
